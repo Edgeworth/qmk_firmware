@@ -28,12 +28,17 @@ bool hold_dance_elapsed(hold_dance_state_t *state) {
     return elapsed > term;
 }
 
-void finish_hold_dance_fn(hold_dance_state_t *state, hold_dance_user_fn_t fn) {
+void finish_hold_dance(hold_dance_state_t *state) {
     add_mods(state->oneshot_mods);
     add_weak_mods(state->weak_mods);
     send_keyboard_report();
 
-    if (fn) fn(state->user_data);
+    bool hold = hold_dance_elapsed(state);
+    if (hold)
+        audio_play_click(0, NOTE_C5, 80);
+
+    hold_dance_user_fn_t fn = hold ? state->on_hold : state->on_tap;
+    fn(state->user_data);
 
     del_mods(state->oneshot_mods);
     del_weak_mods(state->weak_mods);
@@ -45,12 +50,6 @@ void finish_hold_dance_fn(hold_dance_state_t *state, hold_dance_user_fn_t fn) {
     state->oneshot_mods = 0;
     state->weak_mods = 0;
     last_hd_keycode = 0;
-}
-
-void finish_hold_dance(hold_dance_state_t *state) {
-    hold_dance_user_fn_t fn =
-        hold_dance_elapsed(state) ? state->on_hold : state->on_tap;
-    finish_hold_dance_fn(state, fn);
 }
 
 bool process_record_hold_dance(uint16_t keycode, keyrecord_t* record) {
@@ -91,6 +90,6 @@ void matrix_scan_hold_dance(void) {
         hold_dance_state_t* state = &hold_dance_states[i];
         // If the key is pressed, check the timeout.
         if (hold_dance_elapsed(state))
-            finish_hold_dance_fn(state, state->on_hold);
+            finish_hold_dance(state);
     }
 }

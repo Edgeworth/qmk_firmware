@@ -54,40 +54,42 @@ enum {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [LAYER_BASE] = LAYOUT(
-        TT(LAYER_QWERTY), KC_MPRV, KC_MNXT,                   KC_MPLY, KC_VOLD, KC_VOLU,
         KC_Q,    KC_W,    HT(HT_E),HT(HT_R),HT(HT_T),HT(HT_Y),HT(HT_U),HT(HT_I),HT(HT_O),HT(HT_P),
         HT(HT_A),HT(HT_S),HT(HT_D),HT(HT_F),HT(HT_G),HT(HT_H),HT(HT_J),HT(HT_K),HT(HT_L),KC_SCLN,
         KC_Z,    HT(HT_X),HT(HT_C),HT(HT_V),HT(HT_B),HT(HT_N),HT(HT_M),KC_COMM, KC_DOT,  KC_SLSH,
         KC_LGUI, MO(LAYER_SYM), LSFT_T(KC_SPACE), LCTL_T(KC_BSPACE), LALT_T(KC_ESCAPE),
-        LALT_T(KC_ESCAPE), LCTL_T(KC_TAB), LSFT_T(KC_ENTER), MO(LAYER_NAV), KC_LGUI
+        LALT_T(KC_ESCAPE), LCTL_T(KC_TAB), LSFT_T(KC_ENTER), MO(LAYER_NAV), KC_LGUI,
+        KC_MPRV, MO(LAYER_NAV), TT(LAYER_QWERTY), KC_MNXT,
+        KC_VOLD, MO(LAYER_SYM), KC_MPLY, KC_VOLU
     ),
     [LAYER_SYM] = LAYOUT(
-                 KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS,
         KC_PIPE, KC_DQUO, KC_LCBR, KC_RCBR, KC_UNDS, KC_HASH, KC_7,    KC_8,    KC_9,    KC_EXLM,
         KC_AMPR, KC_QUOT, KC_LPRN, KC_RPRN, KC_EQL,  KC_0,    KC_4,    KC_5,    KC_6,    KC_MINS,
         KC_ASTR, KC_GRV,  KC_LBRC, KC_RBRC, KC_BSLS, KC_DLR,  KC_1,    KC_2,    KC_3,    KC_PLUS,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(LAYER_FUNC), KC_TRNS
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MO(LAYER_FUNC), KC_TRNS,
+        KC_TRNS, MO(LAYER_FUNC), KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
     [LAYER_NAV] = LAYOUT(
-                 KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS,
         KC_AT,   KC_WH_L, KC_WH_D, KC_WH_U, KC_WH_R, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, KC_TILD,
         KC_PERC, KC_BTN2, KC_BTN3, KC_BTN1, KC_INS,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CIRC,
         KC_TRNS, KC_ACL2, KC_ACL1, KC_ACL0, KC_DEL,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_TRNS,
-        KC_TRNS, MO(LAYER_FUNC), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS, MO(LAYER_FUNC), KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, MO(LAYER_FUNC), KC_TRNS, KC_TRNS
+
     ),
     [LAYER_FUNC] = LAYOUT(
-                 KC_TRNS, KC_TRNS, KC_TRNS,                   KC_TRNS, KC_TRNS, KC_TRNS,
         KC_NO,   RGB_SAD, RGB_SAI, KC_MPRV, KC_MNXT, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F12,
         RGB_TOG, RGB_VAD, RGB_VAI, KC_VOLD, KC_VOLU, KC_SLCK, KC_F4,   KC_F5,   KC_F6,   KC_F11,
         RESET,   RGB_HUD, RGB_HUI, KC_MPLY, KC_MUTE, KC_PAUS, KC_F1,   KC_F2,   KC_F3,   KC_F10,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
     ),
     [LAYER_QWERTY] = LAYOUT(
-                 KC_1,    KC_2,    KC_3,                      KC_4,    KC_5,    KC_6,
         KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
         KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,
         KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
+        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+        KC_1,    KC_2,    TT(LAYER_BASE),   KC_3,    KC_4,    KC_5,    KC_0,    KC_6
     )
 };
 
@@ -245,62 +247,62 @@ hold_dance_state_t hold_dance_states[] = {
 #define KEYBD HSV_BROWN // Keyboard control keys (brightness, saturation, etc)
 
 #define SEG_LAYOUT( \
-         l00, l01, l02,           r00, r01, r02,      \
+    l00, l01, l02, l03, l04, r00, r01, r02, r03, r04, \
     l10, l11, l12, l13, l14, r10, r11, r12, r13, r14, \
     l20, l21, l22, l23, l24, r20, r21, r22, r23, r24, \
     l30, l31, l32, l33, l34, r30, r31, r32, r33, r34, \
-    l40, l41, l42, l43, l44, r40, r41, r42, r43, r44 \
+    l40, l41, l42, l43,      r40, r41, r42, r43       \
 ) RGBLIGHT_LAYER_SEGMENTS( \
-    {0, 1, l00}, {1, 1, l01}, {2, 1, l02}, \
-    {3, 1, l10}, {4, 1, l11}, {5, 1, l12}, {6, 1, l13}, {7, 1, l14}, \
-    {8, 1, l20}, {9, 1, l21}, {10, 1, l22}, {11, 1, l23}, {12, 1, l24}, \
-    {13, 1, l30}, {14, 1, l31}, {15, 1, l32}, {16, 1, l33}, {17, 1, l34}, \
-    {18, 1, l40}, {19, 1, l41}, {20, 1, l42}, {21, 1, l43}, {22, 1, l44}, \
-    {23, 1, r00}, {24, 1, r01}, {25, 1, r02}, \
-    {26, 1, r10}, {27, 1, r11}, {28, 1, r12}, {29, 1, r13}, {30, 1, r14}, \
-    {31, 1, r20}, {32, 1, r21}, {33, 1, r22}, {34, 1, r23}, {35, 1, r24}, \
-    {36, 1, r30}, {37, 1, r31}, {38, 1, r32}, {39, 1, r33}, {40, 1, r34}, \
-    {41, 1, r40}, {42, 1, r41}, {43, 1, r42}, {44, 1, r43}, {45, 1, r44} \
+    {0, 1, l00}, {1, 1, l01}, {2, 1, l02}, {3, 1, l03}, {4, 1, l04},      \
+    {5, 1, l10}, {6, 1, l11}, {7, 1, l12}, {8, 1, l13}, {9, 1, l14},      \
+    {10, 1, l20}, {11, 1, l21}, {12, 1, l22}, {13, 1, l23}, {14, 1, l24}, \
+    {15, 1, l30}, {16, 1, l31}, {17, 1, l32}, {18, 1, l33}, {19, 1, l34}, \
+    {20, 1, l40}, {21, 1, l41}, {22, 1, l42}, {23, 1, l43},               \
+    {24, 1, r00}, {25, 1, r01}, {26, 1, r02}, {27, 1, r03}, {28, 1, r04}, \
+    {29, 1, r10}, {30, 1, r11}, {31, 1, r12}, {32, 1, r13}, {33, 1, r14}, \
+    {34, 1, r20}, {35, 1, r21}, {36, 1, r22}, {37, 1, r23}, {38, 1, r24}, \
+    {39, 1, r30}, {40, 1, r31}, {41, 1, r32}, {42, 1, r33}, {43, 1, r34}, \
+    {44, 1, r40}, {45, 1, r41}, {46, 1, r42}, {47, 1, r43}                \
 )
 
 const rgblight_segment_t PROGMEM base_led[] = SEG_LAYOUT(
-           LAYER, MEDIA, MEDIA,               MEDIA, MEDIA, MEDIA,
     REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR,
     REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT, REGLR, REGLR, REGLR, REGLR,
     REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT, PUNCT, PUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF
+    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
+    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
 );
 
 const rgblight_segment_t PROGMEM sym_led[] = SEG_LAYOUT(
-           LAYER, MEDIA, MEDIA,               MEDIA, MEDIA, MEDIA,
     PUNCT, PUNCT, BRACK, BRACK, PUNCT, PUNCT, PUNCT, NUMBR, NUMBR, NUMBR,
     PUNCT, PUNCT, BRACK, BRACK, PUNCT, PUNCT, PUNCT, NUMBR, NUMBR, NUMBR,
     PUNCT, PUNCT, BRACK, BRACK, PUNCT, PUNCT, NUMBR, NUMBR, NUMBR, NUMBR,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF
+    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
+    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
 );
 
 const rgblight_segment_t PROGMEM nav_led[] = SEG_LAYOUT(
-           LAYER, MEDIA, MEDIA,               MEDIA, MEDIA, MEDIA,
     PUNCT, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, PUNCT,
     PUNCT, MOUSE, MOUSE, MOUSE, SPECL, NAVIG, NAVIG, NAVIG, NAVIG, PUNCT,
     REGLR, MOUSE, MOUSE, MOUSE, SPECL, NAVIG, NAVIG, NAVIG, NAVIG, PUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF
+    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
+    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
 );
 
 const rgblight_segment_t PROGMEM func_led[] = SEG_LAYOUT(
-           LAYER, MEDIA, MEDIA,               MEDIA, MEDIA, MEDIA,
     KEYBD, KEYBD, KEYBD, MEDIA, MEDIA, SPECL, FUNCT, FUNCT, FUNCT, FUNCT,
     KEYBD, KEYBD, KEYBD, MEDIA, MEDIA, SPECL, FUNCT, FUNCT, FUNCT, FUNCT,
     KEYBD, KEYBD, KEYBD, MEDIA, MEDIA, SPECL, FUNCT, FUNCT, FUNCT, FUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF
+    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
+    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
 );
 
 const rgblight_segment_t PROGMEM qwerty_led[] = SEG_LAYOUT(
-           NUMBR, NUMBR, NUMBR,               NUMBR, NUMBR, NUMBR,
     REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR,
     REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT,
     REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT, PUNCT, PUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF
+    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
+    NUMBR, NUMBR, LAYER, NUMBR,        NUMBR, NUMBR, NUMBR, NUMBR
 );
 
 const rgblight_segment_t* const PROGMEM rgb[] = RGBLIGHT_LAYERS_LIST(
