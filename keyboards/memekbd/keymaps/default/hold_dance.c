@@ -24,8 +24,7 @@ static uint16_t max_idx = 0;
 bool hold_dance_elapsed(hold_dance_state_t *state) {
     if (!state->running) return false;
     uint16_t elapsed = timer_elapsed(state->timer);
-    uint16_t term = get_tapping_term(state->keycode, NULL);
-    return elapsed > term;
+    return elapsed > TAPPING_TERM;
 }
 
 void finish_hold_dance(hold_dance_state_t *state) {

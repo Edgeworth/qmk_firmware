@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_Q,    KC_W,    HT(HT_E),HT(HT_R),HT(HT_T),HT(HT_Y),HT(HT_U),HT(HT_I),HT(HT_O),HT(HT_P),
         HT(HT_A),HT(HT_S),HT(HT_D),HT(HT_F),HT(HT_G),HT(HT_H),HT(HT_J),HT(HT_K),HT(HT_L),KC_SCLN,
         KC_Z,    HT(HT_X),HT(HT_C),HT(HT_V),HT(HT_B),HT(HT_N),HT(HT_M),KC_COMM, KC_DOT,  KC_SLSH,
-        KC_LGUI, MO(LAYER_SYM), LSFT_T(KC_SPACE), LCTL_T(KC_BSPACE), LALT_T(KC_ESCAPE),
+        KC_LGUI, MO(LAYER_SYM), LSFT_T(KC_SPACE), LCTL_T(KC_BSPC), LALT_T(KC_ESCAPE),
         LALT_T(KC_ESCAPE), LCTL_T(KC_TAB), LSFT_T(KC_ENTER), MO(LAYER_NAV), KC_LGUI,
         LSFT(LCTL(KC_TAB)), MO(LAYER_NAV), TT(LAYER_QWERTY), LCTL(KC_TAB),
         KC_VOLD, MO(LAYER_SYM), KC_MPLY, KC_VOLU
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [LAYER_FUNC] = LAYOUT(
         KC_NO,   RGB_SAD, RGB_SAI, KC_MPRV, KC_MNXT, KC_PSCR, KC_F7,   KC_F8,   KC_F9,   KC_F12,
-        RGB_TOG, RGB_VAD, RGB_VAI, KC_VOLD, KC_VOLU, KC_SLCK, KC_F4,   KC_F5,   KC_F6,   KC_F11,
+        RGB_TOG, RGB_VAD, RGB_VAI, KC_VOLD, KC_VOLU, KC_SCRL, KC_F4,   KC_F5,   KC_F6,   KC_F11,
         KC_TRNS, RGB_HUD, RGB_HUI, KC_MPLY, KC_MUTE, KC_PAUS, KC_F1,   KC_F2,   KC_F3,   KC_F10,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS
@@ -229,116 +229,17 @@ hold_dance_state_t hold_dance_states[] = {
     // No Q, Z, or W.
 };
 
-#ifdef RGBLIGHT_ENABLE
-
-#define HSV_BROWN 40, 100, 50
-
-#define MEDIA HSV_GREEN
-#define REGLR HSV_WHITE
-#define MODIF HSV_PURPLE
-#define LAYER HSV_RED
-#define PUNCT HSV_BLUE
-#define BRACK HSV_ORANGE
-#define NUMBR HSV_ORANGE
-#define FUNCT HSV_CYAN  // Function keys
-#define MOUSE HSV_CHARTREUSE
-#define NAVIG HSV_YELLOW  // Cursor keys, home, end etc
-#define SPECL HSV_PINK  // Ins, del, sysrq, etc.
-#define KEYBD HSV_BROWN // Keyboard control keys (brightness, saturation, etc)
-
-#define SEG_LAYOUT( \
-    l00, l01, l02, l03, l04, r00, r01, r02, r03, r04, \
-    l10, l11, l12, l13, l14, r10, r11, r12, r13, r14, \
-    l20, l21, l22, l23, l24, r20, r21, r22, r23, r24, \
-    l30, l31, l32, l33, l34, r30, r31, r32, r33, r34, \
-    l40, l41, l42, l43,      r40, r41, r42, r43       \
-) RGBLIGHT_LAYER_SEGMENTS( \
-    {0, 1, l00}, {1, 1, l01}, {2, 1, l02}, {3, 1, l03}, {4, 1, l04},      \
-    {5, 1, l10}, {6, 1, l11}, {7, 1, l12}, {8, 1, l13}, {9, 1, l14},      \
-    {10, 1, l20}, {11, 1, l21}, {12, 1, l22}, {13, 1, l23}, {14, 1, l24}, \
-    {15, 1, l30}, {16, 1, l31}, {17, 1, l32}, {18, 1, l33}, {19, 1, l34}, \
-    {20, 1, l40}, {21, 1, l41}, {22, 1, l42}, {23, 1, l43},               \
-    {24, 1, r00}, {25, 1, r01}, {26, 1, r02}, {27, 1, r03}, {28, 1, r04}, \
-    {29, 1, r10}, {30, 1, r11}, {31, 1, r12}, {32, 1, r13}, {33, 1, r14}, \
-    {34, 1, r20}, {35, 1, r21}, {36, 1, r22}, {37, 1, r23}, {38, 1, r24}, \
-    {39, 1, r30}, {40, 1, r31}, {41, 1, r32}, {42, 1, r33}, {43, 1, r34}, \
-    {44, 1, r40}, {45, 1, r41}, {46, 1, r42}, {47, 1, r43}                \
-)
-
-const rgblight_segment_t PROGMEM base_led[] = SEG_LAYOUT(
-    REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR,
-    REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT, REGLR, REGLR, REGLR, REGLR,
-    REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT, PUNCT, PUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
-    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
-);
-
-const rgblight_segment_t PROGMEM sym_led[] = SEG_LAYOUT(
-    PUNCT, PUNCT, BRACK, BRACK, PUNCT, PUNCT, PUNCT, NUMBR, NUMBR, NUMBR,
-    PUNCT, PUNCT, BRACK, BRACK, PUNCT, PUNCT, PUNCT, NUMBR, NUMBR, NUMBR,
-    PUNCT, PUNCT, BRACK, BRACK, PUNCT, PUNCT, NUMBR, NUMBR, NUMBR, NUMBR,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
-    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
-);
-
-const rgblight_segment_t PROGMEM nav_led[] = SEG_LAYOUT(
-    PUNCT, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, MOUSE, PUNCT,
-    PUNCT, MOUSE, MOUSE, MOUSE, SPECL, NAVIG, NAVIG, NAVIG, NAVIG, PUNCT,
-    REGLR, MOUSE, MOUSE, MOUSE, SPECL, NAVIG, NAVIG, NAVIG, NAVIG, PUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
-    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
-);
-
-const rgblight_segment_t PROGMEM func_led[] = SEG_LAYOUT(
-    KEYBD, KEYBD, KEYBD, MEDIA, MEDIA, SPECL, FUNCT, FUNCT, FUNCT, FUNCT,
-    KEYBD, KEYBD, KEYBD, MEDIA, MEDIA, SPECL, FUNCT, FUNCT, FUNCT, FUNCT,
-    KEYBD, KEYBD, KEYBD, MEDIA, MEDIA, SPECL, FUNCT, FUNCT, FUNCT, FUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
-    MEDIA, LAYER, LAYER, MEDIA,        MEDIA, LAYER, MEDIA, MEDIA
-);
-
-const rgblight_segment_t PROGMEM qwerty_led[] = SEG_LAYOUT(
-    REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR,
-    REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT,
-    REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, REGLR, PUNCT, PUNCT, PUNCT,
-    MODIF, LAYER, MODIF, MODIF, MODIF, MODIF, MODIF, MODIF, LAYER, MODIF,
-    NUMBR, NUMBR, LAYER, NUMBR,        NUMBR, NUMBR, NUMBR, NUMBR
-);
-
-const rgblight_segment_t* const PROGMEM rgb[] = RGBLIGHT_LAYERS_LIST(
-    base_led,
-    sym_led,
-    nav_led,
-    func_led,
-    qwerty_led
-);
-
-#endif  // RGBLIGHT_ENABLE
-
-void keyboard_post_init_user(void) {
-#ifdef RGBLIGHT_ENABLE
-    // Enable the LED layers
-    // TODO: Generate RGB light layers automatically.
-    rgblight_layers = rgb;
-    rgblight_set_layer_state(0, true);
-#endif  // RGBLIGHT_ENABLE
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-#ifdef RGBLIGHT_ENABLE
-    rgblight_set_layer_state(0, layer_state_cmp(state, LAYER_BASE));
-    rgblight_set_layer_state(1, layer_state_cmp(state, LAYER_SYM));
-    rgblight_set_layer_state(2, layer_state_cmp(state, LAYER_NAV));
-    rgblight_set_layer_state(3, layer_state_cmp(state, LAYER_FUNC));
-    rgblight_set_layer_state(4, layer_state_cmp(state, LAYER_QWERTY));
-#endif  // RGBLIGHT_ENABLE
-    return state;
-}
-
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     return process_record_hold_dance(keycode, record);
 }
 
 void matrix_scan_user(void) {
     matrix_scan_hold_dance();
+}
+
+void keyboard_post_init_user(void) {
+//   debug_enable=true;
+//   debug_matrix=true;
+//   debug_keyboard=true;
+//   debug_mouse=true;
 }
